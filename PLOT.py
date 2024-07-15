@@ -40,11 +40,11 @@ def plot_grid(grid, x_coord, y_coord):
         xx = [x_coord[node1 - 1], x_coord[node2 - 1]]
         yy = [y_coord[node1 - 1], y_coord[node2 - 1]]
         #节点是否在物面上
-        if grid[i, 6] == 3: 
+        if grid[i, 2] == 3: 
             plt.plot(xx, yy, '-k', linewidth=1.5)
         else:
             plt.plot(xx, yy, '-r' )
 
     plt.axis('equal')
-    plt.axis([ 0,  1 , -0.7 , 0.7])
+    plt.axis([ -1 ,  1 , -0.7 , 0.7])
     plt.show()

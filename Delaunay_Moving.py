@@ -1,34 +1,13 @@
-import scipy.io as sio
 import numpy as np
 from scipy.spatial import Delaunay
-import locate as lc
-from PLOT import *
-
-#导入matlab数据
-load_f1 = 'data\\WALL.mat'
-load_data = sio.loadmat(load_f1)
-WALL= load_data['WALL']
-
-
-load_f2 = 'data\\Grid.mat'
-load_data = sio.loadmat(load_f2)
-Grid= load_data['Grid']
-
-
-load_f3 = 'data\\Coord.mat'
-load_data = sio.loadmat(load_f3)
-Coord= load_data['Coord']
-
-
-load_f4 = 'data\\wallNodes.mat'
-load_data = sio.loadmat(load_f4)
-wallNodes= load_data['wallNodes']
-wallNodes = wallNodes[0]
+from locate import point_grid
+from PLOT import plot_delaunay , plot_grid
+from read_grid import Coord , wallNodes , Grid
 
 xCoord = np.array([Coord[:, 0]]).T
 yCoord = np.array([Coord[:, 1]]).T
 nNodes = Coord.shape[0]
-nWallNodes = wallNodes.shape[0]
+nWallNodes = len(wallNodes)
 
 #参数
 A = 0.6 #控制点椭圆长半径x轴方向
@@ -56,7 +35,7 @@ tri = Delaunay(combined_points)
 # plot_delaunay(combined_points , tri)
 
 #关联计算网格节点与背景网格单元
-pg = lc.point_grid(Coord , tri)
+pg = point_grid(Coord , tri)
 
 e_points = [] #计算网格点在网格中的的定位系数
 for i in range(nNodes):
