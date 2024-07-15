@@ -3,7 +3,7 @@ import numpy as np
 from scipy.spatial import Delaunay
 import locate as lc
 from PLOT import *
-from scipy.integrate import quad
+
 #导入matlab数据
 load_f1 = 'data\\WALL.mat'
 load_data = sio.loadmat(load_f1)
@@ -139,6 +139,6 @@ for i in range(nNodes):
         dis_ob.append(np.sqrt((xCoord[j] - compute_points[i][0])**2 + (yCoord[j] - compute_points[i][1])**2))
     dis_ob = min(dis_ob)
     Ra = dis_far / (dis_far + dis_ob)
-    compute_points[i][1] += ymove * Ra
-    
+    compute_points[i][1] += ymove * Ra[0]
+  
 plot_grid(Grid , compute_points[:,0] , compute_points[:,1])

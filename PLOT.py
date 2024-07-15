@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from scipy.spatial import Delaunay
 
 def call_back(event):
     axtemp = event.inaxes
