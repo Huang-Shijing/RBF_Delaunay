@@ -24,9 +24,6 @@ def plot_delaunay(delaunay_points , tri):
     global fig
     fig = plt.figure()
     fig.canvas.mpl_connect('scroll_event', call_back)
-    
-    # tri = Delaunay(delaunay_points)
-
     plt.triplot(delaunay_points[:,0], delaunay_points[:,1], tri.simplices)
     plt.plot(delaunay_points[:,0], delaunay_points[:,1],'o')
     plt.axis('equal')
